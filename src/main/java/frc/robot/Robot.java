@@ -35,22 +35,22 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     joyStick = new Joystick(0);
 
-    CANSparkMax motor0 = sparkMaxInit(0);
+    CANSparkMax motor0 = sparkMaxInitWithParams(11);
     sparkMaxPrintParameters(motor0);
 
-    CANSparkMax motor1 = sparkMaxInit(1);
+    CANSparkMax motor1 = sparkMaxInitWithParams(12);
     sparkMaxPrintParameters(motor1);
 
-    CANSparkMax motor2 = sparkMaxInit(2);
+    CANSparkMax motor2 = sparkMaxInitWithParams(13);
     sparkMaxPrintParameters(motor2);
 
-    CANSparkMax motor3 = sparkMaxInit(3);
+    CANSparkMax motor3 = sparkMaxInitWithParams(21);
     sparkMaxPrintParameters(motor3);
 
-    CANSparkMax motor4 = sparkMaxInit(4);
+    CANSparkMax motor4 = sparkMaxInitWithParams(22);
     sparkMaxPrintParameters(motor4);
 
-    CANSparkMax motor5 = sparkMaxInit(5);
+    CANSparkMax motor5 = sparkMaxInitWithParams(23);
     sparkMaxPrintParameters(motor5);
 
   }
@@ -102,6 +102,9 @@ public class Robot extends TimedRobot {
   }
 
   private void sparkMaxPrintParameters(CANSparkMax motor) {
+
+    String firmware = motor.getFirmwareString();
+    System.out.println("Motor "+ motor.getDeviceId() + ": " + "Firmware: " + firmware);
 
     Short faults = motor.getFaults();
     System.out.println("Motor "+ motor.getDeviceId() + ": " + "Faults: " + faults);
